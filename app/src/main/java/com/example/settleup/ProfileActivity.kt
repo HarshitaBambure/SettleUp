@@ -38,4 +38,10 @@ class ProfileActivity : AppCompatActivity() {
             binding.emailTv.text = email
         }
     }
+
+    // logout code
+    fun onLogout(){
+        firebaseAuth.signOut()
+        checkUser()
+    }
 }

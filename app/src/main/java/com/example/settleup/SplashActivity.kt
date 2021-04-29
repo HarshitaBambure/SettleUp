@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         Handler().postDelayed( object : Runnable{
             override fun run() {
                 if (onBoardingFinished()) {
-                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
                 }else{
                     startActivity(Intent(this@SplashActivity, SliderActivity::class.java))
                 }

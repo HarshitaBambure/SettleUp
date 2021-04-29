@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import com.example.settleup.databinding.ActivitySignInBinding
+import com.example.settleup.db.entity.User
+import com.example.settleup.ui.viewmodel.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -20,7 +24,7 @@ class SignInActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var firebaseAuth: FirebaseAuth
-
+    private lateinit var ViewModel : SignInViewModel
     private companion object{
         private const val RC_SIGN_IN = 100
         private const val TAG = "GOOGLE_SIGN_IN_TAG"
@@ -30,6 +34,8 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        ViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
 
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -46,7 +52,9 @@ class SignInActivity : AppCompatActivity() {
             startActivityForResult(intent, RC_SIGN_IN)
         }
 
-
+        }
+    fun insertUser(user: User){
+        ViewModel.insertUser(user)
     }
 
     private fun checkUser() {
@@ -56,7 +64,7 @@ class SignInActivity : AppCompatActivity() {
             //user is already logged in
             //start profile activity
             finish()
-            startActivity(Intent(this@SignInActivity, ProfileActivity::class.java))
+            startActivity(Intent(this@SignInActivity, MainActivity::class.java))
 
         }
         }
@@ -71,7 +79,9 @@ class SignInActivity : AppCompatActivity() {
             try {
               //  val account = accountTask.getResult(ApiException::class.java)
                 val account = accountTask.getResult(ApiException::class.java)
-                firebaseAuthWithGoogleAccount(account)
+                insertUser(user = User(1,
+                    account?.email.toString(), account?.displayName.toString(), account?.idToken.toString()))
+                 firebaseAuthWithGoogleAccount(account)
             }
             catch (e: Exception){
                 Log.d(TAG, "onActivityResult: ${e.message}")
@@ -107,7 +117,7 @@ class SignInActivity : AppCompatActivity() {
 
                 }
                 //start profile activity
-                startActivity(Intent(this@SignInActivity, ProfileActivity::class.java))
+                startActivity(Intent(this@SignInActivity, MainActivity::class.java))
                 finish()
                 }
             .addOnFailureListener{ e ->

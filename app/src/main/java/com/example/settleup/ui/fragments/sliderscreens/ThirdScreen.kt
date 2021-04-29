@@ -20,7 +20,7 @@ class ThirdScreen : Fragment() {
         val view = inflater.inflate(R.layout.fragment_third_screen, container, false)
 
         view.finish.setOnClickListener{
-        startActivity(Intent(context,MainActivity::class.java))
+        startActivity(Intent(context,SignInActivity::class.java))
             onBoardingFinished()
         }
 

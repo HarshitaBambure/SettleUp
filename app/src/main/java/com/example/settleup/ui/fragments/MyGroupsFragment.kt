@@ -18,8 +18,6 @@ class MyGroupsFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_mygroups, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-
         return root
     }
 }
