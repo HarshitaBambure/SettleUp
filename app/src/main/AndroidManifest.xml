@@ -11,11 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SettleUp">
-        <activity android:name=".AddMembers">
 
+        <activity android:name=".TransactionActivity" />
+        <activity android:name=".NewExpenseActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".AmountPageActivity" />
+        <activity android:name=".AddMembers" />
         <activity android:name=".TransactionsActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".SignInActivity" />
         <activity
             android:name=".MainActivity"
@@ -25,11 +32,7 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/splash_screen_theme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

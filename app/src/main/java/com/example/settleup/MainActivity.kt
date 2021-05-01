@@ -1,6 +1,4 @@
 package com.example.settleup
-
-
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -88,7 +86,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId){
             R.id.nav_home ->{
                 val fragment=  HomeFragment()
-                replaceFragment(fragment,"New Group")
+                replaceFragment(fragment,"Home")
             }
             R.id.nav_newgroup ->{
                 val fragment=  NewGroupFragment()
@@ -107,7 +105,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 onLogout()
             }
             R.id.nav_aboutus ->{
-
+                val fragment=  AboutUsFragment()
+                replaceFragment(fragment,"My Group")
             }
         }
 
