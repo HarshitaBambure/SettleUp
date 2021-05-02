@@ -1,6 +1,5 @@
 package com.example.settleup.ripos
 
-import androidx.room.RoomDatabase
 import com.example.settleup.db.UsersDatabase
 import com.example.settleup.db.entity.User
 

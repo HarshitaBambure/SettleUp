@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_menu_newgroup"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_newgroup"
-            android:icon="@drawable/ic_menu_newgroup"
-            android:title="@string/menu_newgroup" />
-        <item
             android:id="@+id/nav_mygroup"
             android:icon="@drawable/ic_menu_group"
             android:title="@string/menu_mygroup" />

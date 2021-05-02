@@ -6,24 +6,23 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import com.example.settleup.db.dao.ExpenseDao
 import com.example.settleup.db.dao.UsersDao
+import com.example.settleup.db.entity.Expense
+import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.User
+import java.security.acl.Group
 
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class, GroupEntity::class, Expense::class], version = 1)
 abstract class UsersDatabase: RoomDatabase() {
 
-
     abstract fun UsersDao(): UsersDao?
+    abstract fun ExpenseDao(): ExpenseDao?
 
     companion object {
         private var INSTANCE: UsersDatabase?= null
 
-        val migration_1_2: Migration = object: Migration(1, 2) {
-            override fun migrate(database: SupportSQLiteDatabase) {
-                database.execSQL("ALTER TABLE userinfo ADD COLUMN phone TEXT DEFAULT ''")
-            }
-        }
 
         fun getAppDatabase(context: Context): UsersDatabase? {
 
@@ -32,8 +31,7 @@ abstract class UsersDatabase: RoomDatabase() {
                 INSTANCE = Room.databaseBuilder<UsersDatabase>(
                     context.applicationContext, UsersDatabase::class.java, "SettleUp.db",
                 )
-                    .addMigrations(migration_1_2)
-                    .allowMainThreadQueries()
+                                     .allowMainThreadQueries()
                     .build()
 
             }

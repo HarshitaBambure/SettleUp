@@ -13,7 +13,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.settleup.ui.fragments.HomeFragment
 import com.example.settleup.ui.fragments.MyGroupsFragment
-import com.example.settleup.ui.fragments.NewGroupFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
@@ -88,10 +87,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 val fragment=  HomeFragment()
                 replaceFragment(fragment,"Home")
             }
-            R.id.nav_newgroup ->{
-                val fragment=  NewGroupFragment()
-                replaceFragment(fragment,"New Group")
-            }
+
             R.id.nav_mygroup ->{
                 val fragment=  MyGroupsFragment()
                 replaceFragment(fragment,"My Group")
