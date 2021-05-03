@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.settleup.helper.Constants.PREF_SETTLE_UP
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
         )
     }
     private fun onBoardingFinished(): Boolean {
-        val sharedPref = getSharedPreferences("onBoarding", Context.MODE_PRIVATE)
+        val sharedPref = getSharedPreferences(PREF_SETTLE_UP, Context.MODE_PRIVATE)
         return sharedPref.getBoolean("Finished",false)
 
 

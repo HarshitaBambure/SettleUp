@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.settleup.databinding.ActivitySignInBinding
 import com.example.settleup.db.entity.User
+import com.example.settleup.helper.Constants
 import com.example.settleup.ui.viewmodel.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -37,7 +38,7 @@ class SignInActivity : AppCompatActivity() {
 
         ViewModel = ViewModelProviders.of(this).get(SignInViewModel::class.java)
 
-        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+             val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
@@ -50,9 +51,11 @@ class SignInActivity : AppCompatActivity() {
             Log.d(TAG," onCreate: begin Google SignIn")
     val intent = googleSignInClient.signInIntent
             startActivityForResult(intent, RC_SIGN_IN)
-        }
+             }
 
         }
+
+
     fun insertUser(user: User){
         ViewModel.insertUser(user)
     }
@@ -82,6 +85,8 @@ class SignInActivity : AppCompatActivity() {
                 insertUser(user = User(1,
                     account?.email.toString(), account?.displayName.toString(), account?.idToken.toString()))
                  firebaseAuthWithGoogleAccount(account)
+                savePreferances(Constants.PREF_KEY_USERNAME,account?.displayName.toString())
+                savePreferances(Constants.PREF_KEY_EMAIL,account?.email.toString())
             }
             catch (e: Exception){
                 Log.d(TAG, "onActivityResult: ${e.message}")

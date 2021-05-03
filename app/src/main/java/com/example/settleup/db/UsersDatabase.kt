@@ -31,7 +31,7 @@ abstract class UsersDatabase: RoomDatabase() {
                 INSTANCE = Room.databaseBuilder<UsersDatabase>(
                     context.applicationContext, UsersDatabase::class.java, "SettleUp.db",
                 )
-                                     .allowMainThreadQueries()
+                    .allowMainThreadQueries()
                     .build()
 
             }

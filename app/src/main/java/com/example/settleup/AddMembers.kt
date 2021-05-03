@@ -8,6 +8,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.helper.Constants.PREF_KEY_GROUPNAME
 import com.example.settleup.ui.viewmodel.CreateGroupViewModel
 import kotlinx.android.synthetic.main.activity_add_members.*
 
@@ -24,7 +25,7 @@ class AddMembers : AppCompatActivity() {
 
 
         var intent = intent
-         groupname = intent.getStringExtra("key_groupname").toString()
+         groupname = intent.getStringExtra(PREF_KEY_GROUPNAME).toString()
 
 
         btn_add.setOnClickListener{

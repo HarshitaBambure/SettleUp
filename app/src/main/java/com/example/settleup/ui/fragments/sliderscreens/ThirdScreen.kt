@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.settleup.helper.Constants.PREF_SETTLE_UP
 import kotlinx.android.synthetic.main.fragment_third_screen.view.*
 
 
@@ -28,7 +29,7 @@ class ThirdScreen : Fragment() {
     }
 
     private fun onBoardingFinished(){
-        val sharedPref = requireActivity().getSharedPreferences("onBoarding",Context.MODE_PRIVATE)
+        val sharedPref = requireActivity().getSharedPreferences(PREF_SETTLE_UP,Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
         editor.putBoolean("Finished",true)
         editor.apply()

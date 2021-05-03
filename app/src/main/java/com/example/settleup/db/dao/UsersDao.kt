@@ -28,4 +28,7 @@ interface UsersDao {
     @Delete
     fun delete(groupEntity:GroupEntity)
 
+    @Query("SELECT * FROM GroupEntity where group_id=:id")
+    fun getGroupbyid(id:Int): GroupEntity
+
 }

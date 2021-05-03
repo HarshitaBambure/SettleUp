@@ -307,7 +307,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android_SDK/icons/material/materialicons/send/baseline_send_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../../Android_SDK/icons/material/materialicons/add_reaction/baseline_add_reaction_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -317,7 +317,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="send" />
+                            <entry key="outputName" value="ic_add_action" />
                             <entry key="sourceFile" value="C:\Users\Harshita Bambure\Downloads\settle_up_logo.svg" />
                           </map>
                         </option>

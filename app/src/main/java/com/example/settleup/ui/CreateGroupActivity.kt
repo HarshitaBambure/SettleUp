@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.settleup.AddMembers
 import com.example.settleup.R
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.helper.Constants.PREF_KEY_GROUPNAME
 import com.example.settleup.ui.viewmodel.CreateGroupViewModel
 import kotlinx.android.synthetic.main.activity_create_group.*
 
@@ -26,7 +27,7 @@ class CreateGroupActivity : AppCompatActivity() {
             Log.d("btn_cr_group", "Selected")
             val groupname = edt_gp_name.text.toString()
             val intent= Intent(this,AddMembers::class.java)
-            intent.putExtra("key_groupname",groupname)
+            intent.putExtra(PREF_KEY_GROUPNAME,groupname)
             startActivity(intent)
         }
     }
