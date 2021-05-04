@@ -32,8 +32,8 @@ class ExpenseViewModel(application: Application) : AndroidViewModel(application)
     }
     suspend fun getMembersbyGroupid(id : Int): List<String>? {
       val group =  ExpenseRepository.getGroupbyid(id)
-        val members = group?.list_member?.getArray()
-        return members
+        //val members = group?.list_member?.getArray()
+        return mutableListOf()
     }
 
 }

@@ -1,11 +1,10 @@
 package com.example.settleup.db.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
 @Entity
-class User(var email: String, var name: String, var token:String) {
+class Member(var member_name: String, var group_name : String) {
     @PrimaryKey(autoGenerate = true)
     var id = 0
 }
+

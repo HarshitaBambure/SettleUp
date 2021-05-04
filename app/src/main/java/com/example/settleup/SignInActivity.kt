@@ -82,7 +82,7 @@ class SignInActivity : AppCompatActivity() {
             try {
               //  val account = accountTask.getResult(ApiException::class.java)
                 val account = accountTask.getResult(ApiException::class.java)
-                insertUser(user = User(1,
+                insertUser(user = User(
                     account?.email.toString(), account?.displayName.toString(), account?.idToken.toString()))
                  firebaseAuthWithGoogleAccount(account)
                 savePreferances(Constants.PREF_KEY_USERNAME,account?.displayName.toString())

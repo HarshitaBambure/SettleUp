@@ -29,6 +29,7 @@ class CreateGroupActivity : AppCompatActivity() {
             val intent= Intent(this,AddMembers::class.java)
             intent.putExtra(PREF_KEY_GROUPNAME,groupname)
             startActivity(intent)
+            finish()
         }
     }
 //    fun insertGroup(groupEntity: GroupEntity){

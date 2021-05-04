@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DivideAmountActivity">
+
+    <TextView
+        android:id="@+id/forwhom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="For Whom"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+         />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:layout_above="@+id/buttons"
+        tools:listitem="@layout/checkbox_row"
+         />
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:clipToPadding="true"
+        android:padding="4dp">
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_split_amount"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Split by Amount"-->
+<!--         />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_split_weights"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:text="Split by Weights"-->
+<!--         />-->
+
+    <Button
+        android:id="@+id/btn_save_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save"
+         />
+
+    </LinearLayout>
+</RelativeLayout>

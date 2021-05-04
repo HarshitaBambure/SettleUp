@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.settleup.db.UsersDatabase
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.db.entity.Member
 import com.example.settleup.ripos.GroupRepository
 import kotlinx.coroutines.launch
 
@@ -17,10 +18,13 @@ class CreateGroupViewModel(application: Application) : AndroidViewModel(applicat
         GroupRepository = GroupRepository(UsersDatabase)
     }
 
-    fun insertGroup(groupEntity: GroupEntity) {
+    suspend fun insertGroup(groupEntity: GroupEntity): Long? {
 
-        viewModelScope.launch {
-            GroupRepository.insertGroup(groupEntity)
-        }
+           return GroupRepository.insertGroup(groupEntity)
+            }
+    suspend fun insertMember(member: Member): Unit? {
+
+        return GroupRepository.insertMember(member)
     }
+
 }

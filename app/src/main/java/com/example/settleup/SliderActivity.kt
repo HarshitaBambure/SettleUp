@@ -3,6 +3,7 @@ package com.example.settleup
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.settleup.ui.adapters.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_slider.*
 
 class SliderActivity : AppCompatActivity() {

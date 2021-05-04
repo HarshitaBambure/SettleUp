@@ -10,11 +10,12 @@ import com.example.settleup.db.dao.ExpenseDao
 import com.example.settleup.db.dao.UsersDao
 import com.example.settleup.db.entity.Expense
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.db.entity.Member
 import com.example.settleup.db.entity.User
 import java.security.acl.Group
 
 
-@Database(entities = [User::class, GroupEntity::class, Expense::class], version = 1)
+@Database(entities = [User::class, GroupEntity::class, Expense::class, Member::class], version = 1)
 abstract class UsersDatabase: RoomDatabase() {
 
     abstract fun UsersDao(): UsersDao?

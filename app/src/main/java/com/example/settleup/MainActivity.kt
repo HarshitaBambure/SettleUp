@@ -15,6 +15,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import com.example.settleup.helper.Constants
 import com.example.settleup.ui.CreateGroupActivity
+import com.example.settleup.ui.SendFeedbackActivity
 import com.example.settleup.ui.fragments.HomeFragment
 import com.example.settleup.ui.fragments.MyGroupsFragment
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
@@ -61,53 +62,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fab_action.setOnClickListener(
                 View.OnClickListener {
                     isAllFabsVisible = if (!isAllFabsVisible!!) {
-
-                        // when isAllFabsVisible becomes
-                        // true make all the action name
-                        // texts and FABs VISIBLE.
                         fab.show()
                         fab_expenses.show()
                         text_fab.setVisibility(View.VISIBLE)
                         text_expenses.setVisibility(View.VISIBLE)
-
-                        // Now extend the parent FAB, as
-                        // user clicks on the shrinked
-                        // parent FAB
                         fab_action.extend()
-
-                        // make the boolean variable true as
-                        // we have set the sub FABs
-                        // visibility to GONE
                         true
                     } else {
 
-                        // when isAllFabsVisible becomes
-                        // true make all the action name
-                        // texts and FABs GONE.
                         fab.hide()
                         fab_expenses.hide()
                         text_fab.setVisibility(View.GONE)
                         text_expenses.setVisibility(View.GONE)
-
-                        // Set the FAB to shrink after user
-                        // closes all the sub FABs
                         fab_action.shrink()
-
-                        // make the boolean variable false
-                        // as we have set the sub FABs
-                        // visibility to GONE
                         false
                     }
                 })
-
-
-
 
         fab.setOnClickListener {
             val intent = Intent(this, CreateGroupActivity::class.java)
             startActivity(intent)
         }
-
 
         fab_expenses.setOnClickListener {
             val intent = Intent(this, NewExpenseActivity::class.java)
@@ -168,9 +143,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 replaceFragment(fragment, "My Group")
             }
             R.id.nav_sendfeedback -> {
-                // val fragment=  MyGroupsFragment()
-                //replaceFragment(fragment,"My Group")
-                //open gmail here
+                val Activity=  SendFeedbackActivity()
+
+
             }
             R.id.nav_logout -> {
                 onLogout()

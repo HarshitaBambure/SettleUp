@@ -1,13 +1,14 @@
 package com.example.settleup
 
-import android.app.Activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.db.entity.Member
 import com.example.settleup.helper.Constants.PREF_KEY_GROUPNAME
 import com.example.settleup.ui.viewmodel.CreateGroupViewModel
 import kotlinx.android.synthetic.main.activity_add_members.*
@@ -38,9 +39,15 @@ class AddMembers : AppCompatActivity() {
 
             }
         btn_save.setOnClickListener {
-            val groupname = arr.getjson()?.let { it1 -> GroupEntity(1,groupname, it1) }
-            groupname?.let { it1 -> ViewModel.insertGroup(it1) }
-            finish()
+            val groupEntity = GroupEntity(groupname)
+               lifecycleScope.launchWhenStarted {
+               groupEntity?.let { it1 -> ViewModel.insertGroup(groupEntity = it1)}
+
+                arr.forEach {
+                    ViewModel.insertMember(member = Member(it,group_name = groupEntity.group_name))
+                }
+                finish()
+            }
         }
 
     }

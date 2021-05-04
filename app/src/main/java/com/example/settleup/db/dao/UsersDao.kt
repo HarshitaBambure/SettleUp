@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.settleup.db.entity.GroupEntity
+import com.example.settleup.db.entity.Member
 import com.example.settleup.db.entity.User
 
 @Dao
@@ -18,9 +19,9 @@ interface UsersDao {
 
     @Delete
    fun delete(user:User)
-
+//groupentity
     @Insert
-    suspend fun insert (groupEntity: GroupEntity)
+    suspend fun insert (groupEntity: GroupEntity):Long
 
     @Query("SELECT * FROM GroupEntity")
     fun getAllGroups(): List<GroupEntity>
@@ -28,7 +29,14 @@ interface UsersDao {
     @Delete
     fun delete(groupEntity:GroupEntity)
 
-    @Query("SELECT * FROM GroupEntity where group_id=:id")
+    @Query("SELECT * FROM GroupEntity where id =:id")
     fun getGroupbyid(id:Int): GroupEntity
+
+ //member
+    @Insert
+    suspend fun insertMember (member: Member )
+
+    @Query("SELECT * FROM Member where group_name =:id")
+    fun getMemberbyGroupid(id:Int): List<Member>
 
 }

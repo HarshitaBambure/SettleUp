@@ -1,4 +1,4 @@
-package com.example.settleup
+package com.example.settleup.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

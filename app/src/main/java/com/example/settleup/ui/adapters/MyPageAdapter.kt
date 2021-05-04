@@ -1,8 +1,11 @@
-package com.example.settleup
+package com.example.settleup.ui.adapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.settleup.ui.fragments.FragmentOne
+import com.example.settleup.ui.fragments.FragmentThree
+import com.example.settleup.ui.fragments.FragmentTwo
 
 class MyPageAdapter(fm: FragmentManager): FragmentPagerAdapter(fm) {
     override fun getCount(): Int {
