@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_sendfeedback -> {
                 val Activity=  SendFeedbackActivity()
 
-                val intent = Intent(this, CreateGroupActivity::class.java)
+                val intent = Intent(this,SendFeedbackActivity::class.java)
                 startActivity(intent)
             }
             R.id.nav_logout -> {

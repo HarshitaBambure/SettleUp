@@ -52,7 +52,7 @@ class NewExpenseActivity : AppCompatActivity() {
              if (TextUtils.isEmpty(edt_amount.text.toString())) {
                 Toast.makeText(this, "Empty field not allowed!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Proceed..", Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this, "Proceed..", Toast.LENGTH_SHORT).show()
                  val intent= Intent(this,DivideAmountActivity::class.java)
                  startActivity(intent)
 

@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Toast
 import com.example.settleup.R
+import kotlinx.android.synthetic.main.activity_new_expense.*
 import kotlinx.android.synthetic.main.activity_send_feedback.*
 import java.lang.Exception
 
@@ -18,8 +20,8 @@ class SendFeedbackActivity : AppCompatActivity() {
             val recipient = recipentEt.text.toString().trim()
             val subject = subjectEt.text.toString().trim()
             val message = messageEt.text.toString().trim()
-
             sendEmail(recipient,subject,message)
+
         }
     }
 
