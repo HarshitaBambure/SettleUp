@@ -97,11 +97,11 @@
 
 
     <Button
-        android:id="@+id/btn_amount"
+        android:id="@+id/btn_next"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="172dp"
-        android:text="Calculate Amount"
+        android:text="Next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

@@ -39,7 +39,7 @@ class AddMembers : AppCompatActivity() {
 
             }
         btn_save.setOnClickListener {
-            val groupEntity = GroupEntity(groupname)
+            val groupEntity = GroupEntity(groupname,arr.size)
                lifecycleScope.launchWhenStarted {
                groupEntity?.let { it1 -> ViewModel.insertGroup(groupEntity = it1)}
 

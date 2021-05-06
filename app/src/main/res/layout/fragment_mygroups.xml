@@ -3,14 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ui.fragments.MyGroupsFragment">
 
-    <ListView
-        android:id="@+id/list_mygp"
-        android:layout_weight="1"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_groups"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
         android:layout_width="match_parent"
-        android:layout_height="0dp"/>
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

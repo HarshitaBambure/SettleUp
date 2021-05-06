@@ -39,9 +39,8 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
 
     override fun getItemCount(): Int = mDataList.size
 
-    inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    open inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         var checkBox = itemView.checkbox
-
         init {
             checkBox.setOnClickListener {
                 if (!checkBoxStateArray.get(adapterPosition, false)){

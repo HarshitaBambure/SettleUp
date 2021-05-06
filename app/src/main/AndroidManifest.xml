@@ -13,13 +13,14 @@
         android:theme="@style/Theme.SettleUp">
         <activity android:name=".DivideAmountActivity">
 
-        </activity>
+            </activity>
 
         <activity android:name=".ui.SendFeedbackActivity" />
         <activity android:name=".ui.CreateGroupActivity" />
-        <activity android:name=".NewExpenseActivity" />
-        <activity android:name=".AmountPageActivity" />
-        <activity android:name=".AddMembers" />
+        <activity android:name=".NewExpenseActivity" >
+
+        </activity>
+         <activity android:name=".AddMembers" />
         <activity android:name=".TransactionsActivity" />
         <activity android:name=".SignInActivity" />
         <activity
@@ -41,3 +42,4 @@
     </application>
 
 </manifest>
+

@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -38,59 +39,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         firebaseAuth = FirebaseAuth.getInstance()
         supportActionBar?.hide()
 
-       // txt_username.text = getPreferances(Constants.PREF_KEY_USERNAME)
-        //txt_email.text = getPreferances(Constants.PREF_KEY_EMAIL)
-
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
-        val fab_action:ExtendedFloatingActionButton = findViewById(R.id.fab_action)
-        val fab:FloatingActionButton = findViewById(R.id.fab)
-        val fab_expenses:FloatingActionButton = findViewById(R.id.fab_expenses)
-
-        val text_fab = findViewById<TextView>(R.id.txt_fab)
-        val text_expenses = findViewById<TextView>(R.id.txt_expenses)
-
-        fab.setVisibility(View.GONE)
-        fab_expenses.setVisibility(View.GONE)
-        text_fab.setVisibility(View.GONE)
-        text_expenses.setVisibility(View.GONE)
-
-        isAllFabsVisible = false
-        fab_action.shrink()
-
-        fab_action.setOnClickListener(
-                View.OnClickListener {
-                    isAllFabsVisible = if (!isAllFabsVisible!!) {
-                        fab.show()
-                        fab_expenses.show()
-                        text_fab.setVisibility(View.VISIBLE)
-                        text_expenses.setVisibility(View.VISIBLE)
-                        fab_action.extend()
-                        true
-                    } else {
-
-                        fab.hide()
-                        fab_expenses.hide()
-                        text_fab.setVisibility(View.GONE)
-                        text_expenses.setVisibility(View.GONE)
-                        fab_action.shrink()
-                        false
-                    }
-                })
-
-        fab.setOnClickListener {
-            val intent = Intent(this, CreateGroupActivity::class.java)
-            startActivity(intent)
-        }
-
-        fab_expenses.setOnClickListener {
-            val intent = Intent(this, NewExpenseActivity::class.java)
-            startActivity(intent)
-        }
-
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
+       // navView.txt_username.text = getPreferances(Constants.PREF_KEY_USERNAME)
+        //txt_email.text = getPreferances(Constants.PREF_KEY_EMAIL)
        // val navController = findNavController(R.id.content_framelayout)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -145,7 +99,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_sendfeedback -> {
                 val Activity=  SendFeedbackActivity()
 
-
+                val intent = Intent(this, CreateGroupActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_logout -> {
                 onLogout()

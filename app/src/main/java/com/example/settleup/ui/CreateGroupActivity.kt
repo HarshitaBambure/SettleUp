@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.lifecycleScope
 import com.example.settleup.AddMembers
 import com.example.settleup.R
 import com.example.settleup.db.entity.GroupEntity
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_create_group.*
 
 class CreateGroupActivity : AppCompatActivity() {
 
-    private lateinit var ViewModel : CreateGroupViewModel
+    private lateinit var viewmodel : CreateGroupViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,4 +36,5 @@ class CreateGroupActivity : AppCompatActivity() {
 //    fun insertGroup(groupEntity: GroupEntity){
 //        ViewModel.insertGroup(groupEntity)
 //    }
+
 }
