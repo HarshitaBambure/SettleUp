@@ -40,10 +40,6 @@ class MyGroupsFragment : Fragment() {
 
 
 
-///
-
-
-
 
 
 

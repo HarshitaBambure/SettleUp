@@ -15,7 +15,7 @@ class CreateGroupViewModel(application: Application) : AndroidViewModel(applicat
 
     init {
         UsersDatabase = com.example.settleup.db.UsersDatabase.getAppDatabase((getApplication()))!!
-        GroupRepository = GroupRepository(UsersDatabase)
+        GroupRepository = GroupRepository(UsersDatabase.UsersDao())
     }
 
     suspend fun insertGroup(groupEntity: GroupEntity): Long? {

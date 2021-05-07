@@ -28,7 +28,7 @@ import com.google.gson.reflect.TypeToken
     }
 
 
-fun MutableList<String>.getjson(): String? {
+fun MutableList<Int>.getjson(): String? {
      return Gson().toJson(this)
  }
 
@@ -46,9 +46,9 @@ fun Context.getPreferances(key: String): String? {
     return sharedPref.getString(key, "")
 }
 
-fun String.getArray(): List<String> {
-    val listType = object : TypeToken<List<String?>?>() {}.type
-    val posts: List<String> = Gson().fromJson(this, listType)
+fun String.getArray(): List<Int> {
+    val listType = object : TypeToken<List<Int?>?>() {}.type
+    val posts: List<Int> = Gson().fromJson(this, listType)
     return posts
 }
 

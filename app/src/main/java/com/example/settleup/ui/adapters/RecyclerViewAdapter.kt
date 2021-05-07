@@ -7,16 +7,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.settleup.Data
 import com.example.settleup.R
+import com.example.settleup.db.entity.Member
 import kotlinx.android.synthetic.main.checkbox_row.view.*
 
 //divideamountactivity
 
-class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>()
+class MemeberCheckedAdapter: RecyclerView.Adapter<MemeberCheckedAdapter.ViewHolder>()
 {
-    var checkBoxStateArray = SparseBooleanArray()
-    val mDataList: MutableList<Data> = ArrayList()
+    val mDataList: MutableList<Member> = ArrayList()
 
-    public fun updateRecyclerData(list : MutableList<Data>){
+    public fun updateRecyclerData(list : MutableList<Member>){
         mDataList.clear()
         mDataList.addAll(list)
         notifyDataSetChanged()
@@ -29,30 +29,24 @@ class RecyclerViewAdapter: RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(
 
         return ViewHolder(view)
     }
-
+fun getAllCheckedData(): List<Member> {
+    return mDataList
+}
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.checkBox.isChecked = checkBoxStateArray.get(position,false)
-
-        var data_position = mDataList.get(position).position
-        holder.checkBox.text = "CheckBox $data_position"
+        holder.bindData(mDataList.get(position))
     }
 
     override fun getItemCount(): Int = mDataList.size
 
     open inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
         var checkBox = itemView.checkbox
-        init {
-            checkBox.setOnClickListener {
-                if (!checkBoxStateArray.get(adapterPosition, false)){
-                    checkBox.isChecked = true
-                    checkBoxStateArray.put(adapterPosition,true)
-                }
-                else{
-                    checkBox.isChecked = false
-                    checkBoxStateArray.put(adapterPosition,false)
-                }
-            }
-        }
+       fun bindData(member:Member){
+           checkBox.isChecked=member.isChecked
+           checkBox.text=member.member_name
+           checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+               member.isChecked=isChecked
+           }
+       }
 
     }
 }

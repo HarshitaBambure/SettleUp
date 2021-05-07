@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_home.view.*
 
 class HomeFragment : Fragment() {
     var isAllFabsVisible: Boolean? = null
-
       override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -68,9 +67,14 @@ class HomeFragment : Fragment() {
               startActivity(intent)
           }
 
-
+replaceFragment(MyGroupsFragment(),"group_listing")
         return root1view
 
       }
 
+    private fun replaceFragment(fragment: Fragment, teg: String) {
+        val transaction = childFragmentManager.beginTransaction()
+        transaction.replace(R.id.frame_container, fragment, teg)
+        transaction.commit()
+    }
 }

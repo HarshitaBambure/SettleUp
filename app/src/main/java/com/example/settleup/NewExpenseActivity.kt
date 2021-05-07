@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import com.example.settleup.db.entity.Expense
+import com.example.settleup.db.entity.Member
+import com.example.settleup.helper.Constants
 import com.example.settleup.ui.viewmodel.ExpenseViewModel
 import kotlinx.android.synthetic.main.activity_new_expense.*
 
@@ -18,6 +20,8 @@ class NewExpenseActivity : AppCompatActivity() {
 
     private lateinit var ViewModel : ExpenseViewModel
     val users = mutableListOf<String>()
+    lateinit var listusers:  List<Member>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +29,9 @@ class NewExpenseActivity : AppCompatActivity() {
 
         ViewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
         lifecycleScope.launchWhenStarted {
-         val userData=   ViewModel.getMembersbyGroupid(1)
-            userData?.forEach {
-                users.add(it.toString())
+          listusers= ViewModel.getMembersbyGroupid("test")!! //todo change remaining when group details added
+            listusers?.forEach {
+                users.add(it.member_name.toString())
             }
             val arrayAdapter = ArrayAdapter(this@NewExpenseActivity,android.R.layout.simple_spinner_dropdown_item,users)
             spinner_paid.adapter = arrayAdapter
@@ -52,8 +56,10 @@ class NewExpenseActivity : AppCompatActivity() {
              if (TextUtils.isEmpty(edt_amount.text.toString())) {
                 Toast.makeText(this, "Empty field not allowed!", Toast.LENGTH_SHORT).show()
             } else {
-               // Toast.makeText(this, "Proceed..", Toast.LENGTH_SHORT).show()
                  val intent= Intent(this,DivideAmountActivity::class.java)
+                 intent.putExtra(Constants.ACT_KEY_PURPOSE,edt_purpose.text.toString())
+                 intent.putExtra(Constants.ACT_KEY_AMT,edt_amount.text.toString().toInt())
+                 intent.putExtra(Constants.ACT_KEY_PAID_BY,getIDbyName(spinner_paid.selectedItem.toString()))
                  startActivity(intent)
 
              }
@@ -61,7 +67,16 @@ class NewExpenseActivity : AppCompatActivity() {
         }
 
     }
-    fun insertExpense(Expense: Expense){
-       ViewModel.insertExpense(Expense)
+    fun getIDbyName(name:String): Int {
+        listusers.forEach {
+            if (name==it.member_name){
+                return it.id
+            }
+        }
+        return 0
     }
 }
+
+
+
+

@@ -14,16 +14,7 @@ class ExpenseRepository (var UsersDao: UsersDao?,var ExpenseDao : ExpenseDao? ) 
         ExpenseDao?.insert(expense)
 
     }
-    suspend fun getGroupbyid(id : Int): GroupEntity? {
 
-       return UsersDao?.getGroupbyid(id)
-
-    }
-    suspend fun getMemberbyGroupid(id : Int): List<Member>? {
-
-        return UsersDao?.getMemberbyGroupid(id)
-
-    }
 
 
 }
