@@ -26,10 +26,9 @@ class CreateGroupViewModel(application: Application) : AndroidViewModel(applicat
 
         return GroupRepository.insertMember(member)
     }
-  /*   fun getMemberList(groupid: Int): Unit? {
-
-        return GroupRepository.insertMember(member)
-    }*/
+    suspend fun getIdByName(name:String): Int? {
+       return GroupRepository.getGroupIdByName(name)
+  }
 
 
 }

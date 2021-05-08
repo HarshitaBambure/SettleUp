@@ -13,8 +13,8 @@ import java.util.*
 
 class GroupAdapter :RecyclerView.Adapter<GroupAdapter.GroupDetailsViewHolder>(){
     var listGroups= mutableListOf<GroupEntity>()
-
-    open class GroupDetailsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+ lateinit var onclick:(data:GroupEntity)->Unit
+    open class GroupDetailsViewHolder(var onClick:(data:GroupEntity)->Unit,itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bindData(data: GroupEntity) {
 itemView.txt_groupname.text=data.group_name
@@ -24,6 +24,9 @@ itemView.txt_totalcredit.text=data.totalcredit.toString()
             val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
 
             itemView.txt_later.background=itemView.context.roundedCornersDrawable(bgColor = color)
+            itemView.setOnClickListener {
+                onClick(data)
+            }
         }
     }
 fun setData(listData: List<GroupEntity>){
@@ -34,7 +37,7 @@ fun setData(listData: List<GroupEntity>){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupDetailsViewHolder {
 val view=LayoutInflater.from(parent.context).inflate(R.layout.item_group_details, parent, false)
-       return  GroupDetailsViewHolder(view)
+       return  GroupDetailsViewHolder(onclick,view)
     }
 
     override fun onBindViewHolder(holder: GroupDetailsViewHolder, position: Int) {

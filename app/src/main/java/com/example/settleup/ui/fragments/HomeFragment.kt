@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.settleup.NewExpenseActivity
-import com.example.settleup.ui.adapters.MyPageAdapter
 import com.example.settleup.R
 import com.example.settleup.ui.CreateGroupActivity
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -21,7 +20,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
           val root1view = inflater.inflate(R.layout.fragment_home, container, false)
-          var fragmentAdapter =  MyPageAdapter(childFragmentManager)
 
           root1view.fab_action
           root1view.fab

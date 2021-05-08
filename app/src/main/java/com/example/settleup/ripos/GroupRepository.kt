@@ -16,7 +16,11 @@ class GroupRepository(var userDao: UsersDao?) {
     suspend fun getGroupList(): List<GroupEntity>? {
         return userDao?.getAllGroups()
     }
-    suspend fun  getMemberListbyGroup(name:String): List<Member>? {
+    suspend fun  getMemberListbyGroup(name:Int): List<Member>? {
         return userDao?.getMemberbyGroupid(name)
+    }
+
+    suspend fun getGroupIdByName(name:String): Int? {
+        return userDao?.getGroupid(name)
     }
 }

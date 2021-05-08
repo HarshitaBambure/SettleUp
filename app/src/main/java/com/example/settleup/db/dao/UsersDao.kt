@@ -36,7 +36,10 @@ interface UsersDao {
     @Insert
     suspend fun insertMember (member: Member )
 
-    @Query("SELECT * FROM Member where group_name =:name")
-    fun getMemberbyGroupid(name:String): List<Member>
+    @Query("SELECT * FROM Member where group_id =:name")
+    fun getMemberbyGroupid(name:Int): List<Member>
+
+    @Query("SELECT id FROM GroupEntity where group_name =:name")
+    fun getGroupid(name:String): Int
 
 }

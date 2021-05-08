@@ -18,18 +18,20 @@ import kotlinx.android.synthetic.main.activity_new_expense.*
 
 class NewExpenseActivity : AppCompatActivity() {
 
+    private var grpId: Int = 0
     private lateinit var ViewModel : ExpenseViewModel
     val users = mutableListOf<String>()
     lateinit var listusers:  List<Member>
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_expense)
-
+        grpId= intent.getIntExtra(Constants.KEY_GRP_ID,0)
         ViewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
         lifecycleScope.launchWhenStarted {
-          listusers= ViewModel.getMembersbyGroupid("test")!! //todo change remaining when group details added
+          listusers= ViewModel.getMembersbyGroupid(grpId)!! //todo change remaining when group details added
             listusers?.forEach {
                 users.add(it.member_name.toString())
             }
@@ -60,6 +62,7 @@ class NewExpenseActivity : AppCompatActivity() {
                  intent.putExtra(Constants.ACT_KEY_PURPOSE,edt_purpose.text.toString())
                  intent.putExtra(Constants.ACT_KEY_AMT,edt_amount.text.toString().toInt())
                  intent.putExtra(Constants.ACT_KEY_PAID_BY,getIDbyName(spinner_paid.selectedItem.toString()))
+                 intent.putExtra(Constants.KEY_GRP_ID,grpId)
                  startActivity(intent)
 
              }

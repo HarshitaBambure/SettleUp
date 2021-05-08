@@ -42,9 +42,9 @@ class AddMembers : AppCompatActivity() {
             val groupEntity = GroupEntity(groupname,arr.size)
                lifecycleScope.launchWhenStarted {
                groupEntity?.let { it1 -> ViewModel.insertGroup(groupEntity = it1)}
-
+val id=ViewModel.getIdByName(groupEntity.group_name)
                 arr.forEach {
-                    ViewModel.insertMember(member = Member(it,group_name = groupEntity.group_name))
+                    id?.let { it1 -> Member(it,group_id = it1) }?.let { it2 -> ViewModel.insertMember(member = it2) }
                 }
                 finish()
             }

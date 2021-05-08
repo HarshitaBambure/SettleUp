@@ -14,29 +14,22 @@ import kotlinx.coroutines.launch
 import java.security.acl.Group
 import kotlin.math.exp
 
-class ExpenseViewModel(application: Application) : AndroidViewModel(application) {
+class GroupDetailsViewModel(application: Application) : AndroidViewModel(application) {
     var UsersDatabase: UsersDatabase
     var groupRepository: GroupRepository
-    var expenseRepository: ExpenseRepository
+    var expensepository: ExpenseRepository
+
     init {
         UsersDatabase = com.example.settleup.db.UsersDatabase.getAppDatabase((getApplication()))!!
-
         groupRepository = GroupRepository(UsersDatabase.UsersDao())
-        expenseRepository =ExpenseRepository(UsersDatabase.ExpenseDao())
-
-
-
-    }
-    fun insertExpense(expense: Expense){
-
-        viewModelScope.launch{
-            expenseRepository.insertExpense(expense)
-        }
+        expensepository = ExpenseRepository(UsersDatabase.ExpenseDao())
 
     }
     suspend fun getMembersbyGroupid(id : Int): List<Member>? {
-
         return groupRepository.getMemberListbyGroup(id)
+    }
+    suspend fun getExpensebyGroupid(id : Int): List<Expense>? {
+        return expensepository.getExpensesbyGroup(id)
     }
 
 }
