@@ -1,6 +1,5 @@
 package com.example.settleup.ripos
 
-import com.example.settleup.db.UsersDatabase
 import com.example.settleup.db.dao.UsersDao
 import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.Member

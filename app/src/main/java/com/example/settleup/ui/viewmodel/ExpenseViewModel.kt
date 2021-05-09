@@ -4,15 +4,11 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.settleup.db.UsersDatabase
-import com.example.settleup.db.dao.UsersDao
 import com.example.settleup.db.entity.Expense
 import com.example.settleup.db.entity.Member
-import com.example.settleup.getArray
 import com.example.settleup.ripos.ExpenseRepository
 import com.example.settleup.ripos.GroupRepository
 import kotlinx.coroutines.launch
-import java.security.acl.Group
-import kotlin.math.exp
 
 class ExpenseViewModel(application: Application) : AndroidViewModel(application) {
     var UsersDatabase: UsersDatabase

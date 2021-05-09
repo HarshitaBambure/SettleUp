@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
 import com.example.settleup.databinding.ActivitySignInBinding
 import com.example.settleup.db.entity.User

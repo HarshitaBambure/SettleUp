@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
-import com.example.settleup.db.entity.Expense
 import com.example.settleup.db.entity.Member
 import com.example.settleup.helper.Constants
 import com.example.settleup.ui.viewmodel.ExpenseViewModel
@@ -30,7 +29,7 @@ class NewExpenseActivity : AppCompatActivity() {
         grpId = intent.getIntExtra(Constants.KEY_GRP_ID, 0)
         ViewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
         lifecycleScope.launchWhenStarted {
-            listusers = ViewModel.getMembersbyGroupid(grpId)!! //todo change remaining when group details added
+            listusers = ViewModel.getMembersbyGroupid(grpId)!!
             listusers?.forEach {
                 users.add(it.member_name.toString())
             }
@@ -44,7 +43,7 @@ class NewExpenseActivity : AppCompatActivity() {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
                 if (selectedItem == "Add new category") {
-                    // do your stuff
+
                 }
             } // to close the onItemSelected
 

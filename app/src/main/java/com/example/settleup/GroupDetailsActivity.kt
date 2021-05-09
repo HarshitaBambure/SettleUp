@@ -90,8 +90,8 @@ class GroupDetailsActivity : AppCompatActivity() {
 
         listDebts.clear()
         val receiver = hasMapAmout.entries.find { it -> it.value > 0 }?.key
-        hasMapAmout.entries.forEach { // {(1userid,-10amt),(2,-10),(3,20)} ise data hua ab 3 bar loot gumega,yaha due amt milega
-            val entry = it //(1,-10)
+        hasMapAmout.entries.forEach {
+            val entry = it
             listMember.forEach {
                 if (entry.key == it.id) {
                     it.amtGrp = entry.value

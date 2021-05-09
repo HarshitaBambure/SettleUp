@@ -54,4 +54,3 @@ class GroupAdapter : RecyclerView.Adapter<GroupAdapter.GroupDetailsViewHolder>()
 }
 
 
-//recycler view pura load nhi ho raha

@@ -1,16 +1,14 @@
 package com.example.settleup.ui.adapters
 
-import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.settleup.Data
 import com.example.settleup.R
 import com.example.settleup.db.entity.Member
 import kotlinx.android.synthetic.main.checkbox_row.view.*
 
-//divideamountactivity
+
 
 class MemeberCheckedAdapter : RecyclerView.Adapter<MemeberCheckedAdapter.ViewHolder>() {
     val mDataList: MutableList<Member> = ArrayList()

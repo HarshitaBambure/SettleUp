@@ -5,14 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.settleup.R
-import com.example.settleup.db.entity.Expense
 import com.example.settleup.ui.Debts
 import kotlinx.android.synthetic.main.item_debts.view.*
 
 
 class SettleDebitsAdapter() : RecyclerView.Adapter<SettleDebitsAdapter.SattleViewHolder>() {
     val debits = mutableListOf<Debts>()
-
 
     override fun getItemCount(): Int = debits.count()
 

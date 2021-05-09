@@ -4,16 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.settleup.db.dao.ExpenseDao
 import com.example.settleup.db.dao.UsersDao
 import com.example.settleup.db.entity.Expense
 import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.Member
 import com.example.settleup.db.entity.User
-import java.security.acl.Group
-
 
 @Database(entities = [User::class, GroupEntity::class, Expense::class, Member::class], version = 1)
 abstract class UsersDatabase : RoomDatabase() {

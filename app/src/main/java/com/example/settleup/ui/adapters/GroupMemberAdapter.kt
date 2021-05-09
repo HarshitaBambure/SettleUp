@@ -4,12 +4,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.settleup.R
 import com.example.settleup.db.entity.Member
 import com.example.settleup.roundedCornersDrawable
-import kotlinx.android.synthetic.main.item_group_details.view.*
 import kotlinx.android.synthetic.main.item_group_member.view.*
 import kotlinx.android.synthetic.main.item_group_member.view.txt_later
 import java.util.*

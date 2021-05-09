@@ -1,10 +1,7 @@
 package com.example.settleup
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,9 +10,8 @@ import com.example.settleup.db.entity.Member
 import com.example.settleup.helper.Constants
 import com.example.settleup.ui.adapters.MemeberCheckedAdapter
 import com.example.settleup.ui.viewmodel.ExpenseViewModel
-import kotlinx.android.synthetic.main.activity_create_group.*
 import kotlinx.android.synthetic.main.activity_divide_amount.*
-import kotlinx.android.synthetic.main.activity_new_expense.*
+
 
 class DivideAmountActivity : AppCompatActivity() {
     private var grpId: Int = 0
@@ -40,7 +36,7 @@ class DivideAmountActivity : AppCompatActivity() {
         adapter = MemeberCheckedAdapter()
         recyclerview.adapter = adapter
         lifecycleScope.launchWhenStarted {
-            val data = viewModel.getMembersbyGroupid(grpId)//todo change group name by passing from other activity
+            val data = viewModel.getMembersbyGroupid(grpId)
             data?.forEach {
                 listMember.add(it)
             }
@@ -65,7 +61,7 @@ class DivideAmountActivity : AppCompatActivity() {
             }
         }
         val expense = Expense(forwhom = list.getjson()!!, purpose = purpose!!, amount = amt?.toInt()!!, whopaid = paid_by!!, groupId = grpId, whopaidName = paid_by_name!!)
-        // val expense=Expense()// todo sme jo data chhiye wo sara data lana hai dusri activity se and yaha se
+        // val expense=Expense()
         viewModel.insertExpense(expense)
         finish()
     }
