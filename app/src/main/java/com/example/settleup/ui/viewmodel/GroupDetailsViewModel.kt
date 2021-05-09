@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.settleup.db.UsersDatabase
 import com.example.settleup.db.dao.UsersDao
 import com.example.settleup.db.entity.Expense
+import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.Member
 import com.example.settleup.getArray
 import com.example.settleup.ripos.ExpenseRepository
@@ -25,11 +26,20 @@ class GroupDetailsViewModel(application: Application) : AndroidViewModel(applica
         expensepository = ExpenseRepository(UsersDatabase.ExpenseDao())
 
     }
-    suspend fun getMembersbyGroupid(id : Int): List<Member>? {
+
+    suspend fun getMembersbyGroupid(id: Int): List<Member>? {
         return groupRepository.getMemberListbyGroup(id)
     }
-    suspend fun getExpensebyGroupid(id : Int): List<Expense>? {
+
+    suspend fun getExpensebyGroupid(id: Int): List<Expense>? {
         return expensepository.getExpensesbyGroup(id)
     }
 
+    suspend fun getGroupbyId(id: Int): GroupEntity? {
+        return groupRepository.getGroupById(id)
+    }
+
+    suspend fun settleUp(id: Int) {
+        expensepository.SettleUp(id)
+    }
 }

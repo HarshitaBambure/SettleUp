@@ -13,15 +13,30 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_gravity="center"
+            android:id="@+id/img_drawer"
+            android:src="@drawable/ic_settle_up_logo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"/>
     <TextView
+android:layout_marginStart="8dp"
+        android:layout_gravity="center"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:text="Settle Up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    </LinearLayout>
 </androidx.appcompat.widget.Toolbar>
     <FrameLayout
+        android:layout_marginTop="24dp"
         android:id="@+id/content_framelayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

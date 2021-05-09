@@ -12,11 +12,10 @@ import kotlinx.android.synthetic.main.checkbox_row.view.*
 
 //divideamountactivity
 
-class MemeberCheckedAdapter: RecyclerView.Adapter<MemeberCheckedAdapter.ViewHolder>()
-{
+class MemeberCheckedAdapter : RecyclerView.Adapter<MemeberCheckedAdapter.ViewHolder>() {
     val mDataList: MutableList<Member> = ArrayList()
 
-    public fun updateRecyclerData(list : MutableList<Member>){
+    public fun updateRecyclerData(list: MutableList<Member>) {
         mDataList.clear()
         mDataList.addAll(list)
         notifyDataSetChanged()
@@ -25,28 +24,30 @@ class MemeberCheckedAdapter: RecyclerView.Adapter<MemeberCheckedAdapter.ViewHold
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val context = parent.context
         val inflater = LayoutInflater.from(context)
-        val view = inflater.inflate(R.layout.checkbox_row,parent,false)
+        val view = inflater.inflate(R.layout.checkbox_row, parent, false)
 
         return ViewHolder(view)
     }
-fun getAllCheckedData(): List<Member> {
-    return mDataList
-}
+
+    fun getAllCheckedData(): List<Member> {
+        return mDataList
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bindData(mDataList.get(position))
     }
 
     override fun getItemCount(): Int = mDataList.size
 
-    open inner class ViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
+    open inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var checkBox = itemView.checkbox
-       fun bindData(member:Member){
-           checkBox.isChecked=member.isChecked
-           checkBox.text=member.member_name
-           checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
-               member.isChecked=isChecked
-           }
-       }
+        fun bindData(member: Member) {
+            checkBox.isChecked = member.isChecked
+            checkBox.text = member.member_name
+            checkBox.setOnCheckedChangeListener { buttonView, isChecked ->
+                member.isChecked = isChecked
+            }
+        }
 
     }
 }

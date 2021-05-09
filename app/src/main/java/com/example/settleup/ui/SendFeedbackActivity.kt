@@ -20,7 +20,7 @@ class SendFeedbackActivity : AppCompatActivity() {
             val recipient = recipentEt.text.toString().trim()
             val subject = subjectEt.text.toString().trim()
             val message = messageEt.text.toString().trim()
-            sendEmail(recipient,subject,message)
+            sendEmail(recipient, subject, message)
 
         }
     }
@@ -35,9 +35,9 @@ class SendFeedbackActivity : AppCompatActivity() {
         mIntent.putExtra(Intent.EXTRA_TEXT, message)
 
         try {
-            startActivity(Intent.createChooser(mIntent,"Choose Email Client.."))
-        }catch (e: Exception){
-            Toast.makeText(this,e.message,Toast.LENGTH_LONG).show()
+            startActivity(Intent.createChooser(mIntent, "Choose Email Client.."))
+        } catch (e: Exception) {
+            Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
 
     }

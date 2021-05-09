@@ -8,12 +8,12 @@ import kotlinx.android.synthetic.main.activity_member_list.*
 
 class MemberListActivity : AppCompatActivity() {
 
-        override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_member_list)
-            recycler_view.layoutManager = LinearLayoutManager(this)
-            recycler_view.setHasFixedSize(true)
-        }
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        recycler_view.setHasFixedSize(true)
+    }
 
 
 }

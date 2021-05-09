@@ -18,25 +18,28 @@ class ExpenseViewModel(application: Application) : AndroidViewModel(application)
     var UsersDatabase: UsersDatabase
     var groupRepository: GroupRepository
     var expenseRepository: ExpenseRepository
+
     init {
         UsersDatabase = com.example.settleup.db.UsersDatabase.getAppDatabase((getApplication()))!!
 
         groupRepository = GroupRepository(UsersDatabase.UsersDao())
-        expenseRepository =ExpenseRepository(UsersDatabase.ExpenseDao())
-
+        expenseRepository = ExpenseRepository(UsersDatabase.ExpenseDao())
 
 
     }
-    fun insertExpense(expense: Expense){
 
-        viewModelScope.launch{
+    fun insertExpense(expense: Expense) {
+
+        viewModelScope.launch {
             expenseRepository.insertExpense(expense)
         }
 
     }
-    suspend fun getMembersbyGroupid(id : Int): List<Member>? {
+
+    suspend fun getMembersbyGroupid(id: Int): List<Member>? {
 
         return groupRepository.getMemberListbyGroup(id)
     }
+
 
 }

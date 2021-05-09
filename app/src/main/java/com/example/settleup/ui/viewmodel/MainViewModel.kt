@@ -9,11 +9,13 @@ import com.example.settleup.ripos.GroupRepository
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     var usersDatabase: UsersDatabase
     var groupRepository: GroupRepository
+
     init {
         usersDatabase = com.example.settleup.db.UsersDatabase.getAppDatabase((getApplication()))!!
         groupRepository = GroupRepository(usersDatabase.UsersDao())
     }
+
     suspend fun getGroupList(): List<GroupEntity>? {
-      return  groupRepository.getGroupList()
+        return groupRepository.getGroupList()
     }
 }

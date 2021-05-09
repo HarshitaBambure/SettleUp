@@ -19,23 +19,22 @@ import kotlinx.android.synthetic.main.activity_new_expense.*
 class NewExpenseActivity : AppCompatActivity() {
 
     private var grpId: Int = 0
-    private lateinit var ViewModel : ExpenseViewModel
+    private lateinit var ViewModel: ExpenseViewModel
     val users = mutableListOf<String>()
-    lateinit var listusers:  List<Member>
-
+    lateinit var listusers: List<Member>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_expense)
-        grpId= intent.getIntExtra(Constants.KEY_GRP_ID,0)
+        grpId = intent.getIntExtra(Constants.KEY_GRP_ID, 0)
         ViewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
         lifecycleScope.launchWhenStarted {
-          listusers= ViewModel.getMembersbyGroupid(grpId)!! //todo change remaining when group details added
+            listusers = ViewModel.getMembersbyGroupid(grpId)!! //todo change remaining when group details added
             listusers?.forEach {
                 users.add(it.member_name.toString())
             }
-            val arrayAdapter = ArrayAdapter(this@NewExpenseActivity,android.R.layout.simple_spinner_dropdown_item,users)
+            val arrayAdapter = ArrayAdapter(this@NewExpenseActivity, android.R.layout.simple_spinner_dropdown_item, users)
             spinner_paid.adapter = arrayAdapter
         }
 
@@ -44,7 +43,7 @@ class NewExpenseActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                if(selectedItem == "Add new category") {
+                if (selectedItem == "Add new category") {
                     // do your stuff
                 }
             } // to close the onItemSelected
@@ -55,24 +54,27 @@ class NewExpenseActivity : AppCompatActivity() {
         }
 
         btn_next.setOnClickListener {
-             if (TextUtils.isEmpty(edt_amount.text.toString())) {
+            if (TextUtils.isEmpty(edt_amount.text.toString())) {
                 Toast.makeText(this, "Empty field not allowed!", Toast.LENGTH_SHORT).show()
             } else {
-                 val intent= Intent(this,DivideAmountActivity::class.java)
-                 intent.putExtra(Constants.ACT_KEY_PURPOSE,edt_purpose.text.toString())
-                 intent.putExtra(Constants.ACT_KEY_AMT,edt_amount.text.toString().toInt())
-                 intent.putExtra(Constants.ACT_KEY_PAID_BY,getIDbyName(spinner_paid.selectedItem.toString()))
-                 intent.putExtra(Constants.KEY_GRP_ID,grpId)
-                 startActivity(intent)
+                val intent = Intent(this, DivideAmountActivity::class.java)
+                intent.putExtra(Constants.ACT_KEY_PURPOSE, edt_purpose.text.toString())
+                intent.putExtra(Constants.ACT_KEY_AMT, edt_amount.text.toString().toInt())
+                intent.putExtra(Constants.ACT_KEY_PAID_BY, getIDbyName(spinner_paid.selectedItem.toString()))
+                intent.putExtra(Constants.ACT_KEY_PAID_BYNAME, spinner_paid.selectedItem.toString())
+                intent.putExtra(Constants.KEY_GRP_ID, grpId)
+                finish()
+                startActivity(intent)
 
-             }
+            }
 
         }
 
     }
-    fun getIDbyName(name:String): Int {
+
+    fun getIDbyName(name: String): Int {
         listusers.forEach {
-            if (name==it.member_name){
+            if (name == it.member_name) {
                 return it.id
             }
         }

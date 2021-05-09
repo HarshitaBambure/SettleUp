@@ -11,23 +11,24 @@ class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        Handler().postDelayed( object : Runnable{
+        Handler().postDelayed(object : Runnable {
             override fun run() {
+                finish()
                 if (onBoardingFinished()) {
                     startActivity(Intent(this@SplashActivity, SignInActivity::class.java))
-                }else{
+                } else {
                     startActivity(Intent(this@SplashActivity, SliderActivity::class.java))
                 }
             }
 
-        }
-            ,2000
+        }, 2000
         )
     }
+
     private fun onBoardingFinished(): Boolean {
         val sharedPref = getSharedPreferences(PREF_SETTLE_UP, Context.MODE_PRIVATE)
-        return sharedPref.getBoolean("Finished",false)
+        return sharedPref.getBoolean("Finished", false)
 
 
     }
-    }
+}

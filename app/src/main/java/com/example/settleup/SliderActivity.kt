@@ -12,15 +12,15 @@ class SliderActivity : AppCompatActivity() {
         setContentView(R.layout.activity_slider)
 
         val fragmentList = arrayListOf<Fragment>(
-            FirstScreen(),
-            SecondScreen(),
-            ThirdScreen()
+                FirstScreen(),
+                SecondScreen(),
+                ThirdScreen()
         )
 
         val adapter = ViewPagerAdapter(
-            fragmentList,
-            supportFragmentManager,
-            lifecycle
+                fragmentList,
+                supportFragmentManager,
+                lifecycle
         )
 
         viewPager.adapter = adapter

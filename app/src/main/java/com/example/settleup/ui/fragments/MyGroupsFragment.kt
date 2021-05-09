@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.fragment_mygroups.view.*
 class MyGroupsFragment : Fragment() {
 
     private lateinit var adapter: GroupAdapter
-    private lateinit var viewModel : MainViewModel
+    private lateinit var viewModel: MainViewModel
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -27,15 +27,15 @@ class MyGroupsFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_mygroups, container, false)
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        adapter=GroupAdapter()
-        root.rv_groups.adapter=adapter
-        adapter.onclick={
-            val intent=Intent(activity,GroupDetailsActivity::class.java)
-            intent.putExtra(Constants.KEY_GRP_ID,it.id)
+        adapter = GroupAdapter()
+        root.rv_groups.adapter = adapter
+        adapter.onclick = {
+            val intent = Intent(activity, GroupDetailsActivity::class.java)
+            intent.putExtra(Constants.KEY_GRP_ID, it.id)
             startActivity(intent)
         }
         lifecycleScope.launchWhenStarted {
-           val data=viewModel.getGroupList()
+            val data = viewModel.getGroupList()
             data?.let { adapter.setData(it) }
         }
         return root

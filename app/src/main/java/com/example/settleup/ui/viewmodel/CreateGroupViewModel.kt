@@ -20,15 +20,17 @@ class CreateGroupViewModel(application: Application) : AndroidViewModel(applicat
 
     suspend fun insertGroup(groupEntity: GroupEntity): Long? {
 
-           return GroupRepository.insertGroup(groupEntity)
-            }
+        return GroupRepository.insertGroup(groupEntity)
+    }
+
     suspend fun insertMember(member: Member): Unit? {
 
         return GroupRepository.insertMember(member)
     }
-    suspend fun getIdByName(name:String): Int? {
-       return GroupRepository.getGroupIdByName(name)
-  }
+
+    suspend fun getIdByName(name: String): Int? {
+        return GroupRepository.getGroupIdByName(name)
+    }
 
 
 }

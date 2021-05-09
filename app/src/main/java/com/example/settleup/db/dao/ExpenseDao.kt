@@ -9,11 +9,11 @@ import com.example.settleup.db.entity.Expense
 @Dao
 interface ExpenseDao {
     @Query("SELECT * FROM expense where groupId=:id")
-    fun getAllExpense(id:Int): List<Expense>
+    fun getAllExpense(id: Int): List<Expense>
 
     @Insert
-    suspend fun insert ( group: Expense)
+    suspend fun insert(group: Expense)
 
-    @Delete
-    fun delete(group: Expense)
+    @Query("DELETE FROM expense where groupId=:id")
+    fun deleteExpenses(id: Int)
 }

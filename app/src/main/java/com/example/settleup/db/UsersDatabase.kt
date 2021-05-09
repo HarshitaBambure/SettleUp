@@ -16,24 +16,24 @@ import java.security.acl.Group
 
 
 @Database(entities = [User::class, GroupEntity::class, Expense::class, Member::class], version = 1)
-abstract class UsersDatabase: RoomDatabase() {
+abstract class UsersDatabase : RoomDatabase() {
 
     abstract fun UsersDao(): UsersDao?
     abstract fun ExpenseDao(): ExpenseDao?
 
     companion object {
-        private var INSTANCE: UsersDatabase?= null
+        private var INSTANCE: UsersDatabase? = null
 
 
         fun getAppDatabase(context: Context): UsersDatabase? {
 
-            if(INSTANCE == null ) {
+            if (INSTANCE == null) {
 
                 INSTANCE = Room.databaseBuilder<UsersDatabase>(
-                    context.applicationContext, UsersDatabase::class.java, "SettleUp.db",
+                        context.applicationContext, UsersDatabase::class.java, "SettleUp.db",
                 )
-                    .allowMainThreadQueries()
-                    .build()
+                        .allowMainThreadQueries()
+                        .build()
 
             }
             return INSTANCE

@@ -13,6 +13,7 @@ import com.example.settleup.db.entity.Member
 import com.example.settleup.helper.Constants
 import com.example.settleup.ui.adapters.MemeberCheckedAdapter
 import com.example.settleup.ui.viewmodel.ExpenseViewModel
+import kotlinx.android.synthetic.main.activity_create_group.*
 import kotlinx.android.synthetic.main.activity_divide_amount.*
 import kotlinx.android.synthetic.main.activity_new_expense.*
 
@@ -21,23 +22,25 @@ class DivideAmountActivity : AppCompatActivity() {
     private var paid_by: Int? = null
     private var amt: Int? = null
     private var purpose: String? = null
+    private var paid_by_name: String? = null
     var listMember = ArrayList<Member>()
     lateinit var adapter: MemeberCheckedAdapter
-    private lateinit var viewModel : ExpenseViewModel
+    private lateinit var viewModel: ExpenseViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_divide_amount)//
 
-        purpose=intent.getStringExtra(Constants.ACT_KEY_PURPOSE)
-        grpId= intent.getIntExtra(Constants.KEY_GRP_ID,0)
-        amt=intent.getIntExtra(Constants.ACT_KEY_AMT,0)
-        paid_by=intent.getIntExtra(Constants.ACT_KEY_PAID_BY,0)
+        purpose = intent.getStringExtra(Constants.ACT_KEY_PURPOSE)
+        grpId = intent.getIntExtra(Constants.KEY_GRP_ID, 0)
+        amt = intent.getIntExtra(Constants.ACT_KEY_AMT, 0)
+        paid_by = intent.getIntExtra(Constants.ACT_KEY_PAID_BY, 0)
+        paid_by_name = intent.getStringExtra(Constants.ACT_KEY_PAID_BYNAME)
         viewModel = ViewModelProviders.of(this).get(ExpenseViewModel::class.java)
-        adapter= MemeberCheckedAdapter()
-        recyclerview.adapter=adapter
+        adapter = MemeberCheckedAdapter()
+        recyclerview.adapter = adapter
         lifecycleScope.launchWhenStarted {
-            val data =viewModel.getMembersbyGroupid(grpId)//todo change group name by passing from other activity
+            val data = viewModel.getMembersbyGroupid(grpId)//todo change group name by passing from other activity
             data?.forEach {
                 listMember.add(it)
             }
@@ -52,19 +55,20 @@ class DivideAmountActivity : AppCompatActivity() {
         }
 
     }
-    private fun insertExpense(){
-        var forWhome=adapter.getAllCheckedData()
-        val list= mutableListOf<Int>()
-        forWhome.forEach{
-            if(it.isChecked){
+
+    private fun insertExpense() {
+        var forWhome = adapter.getAllCheckedData()
+        val list = mutableListOf<Int>()
+        forWhome.forEach {
+            if (it.isChecked) {
                 list.add(it.id)
             }
         }
-        val expense=Expense(forwhom = list.getjson()!!,purpose = purpose!!,amount = amt?.toInt()!!,whopaid = paid_by!!,groupId = grpId)
-       // val expense=Expense()// todo sme jo data chhiye wo sara data lana hai dusri activity se and yaha se
+        val expense = Expense(forwhom = list.getjson()!!, purpose = purpose!!, amount = amt?.toInt()!!, whopaid = paid_by!!, groupId = grpId, whopaidName = paid_by_name!!)
+        // val expense=Expense()// todo sme jo data chhiye wo sara data lana hai dusri activity se and yaha se
         viewModel.insertExpense(expense)
         finish()
     }
 
-}
 
+}

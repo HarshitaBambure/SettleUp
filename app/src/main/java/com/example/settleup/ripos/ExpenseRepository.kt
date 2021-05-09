@@ -8,15 +8,19 @@ import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.Member
 
 
-class ExpenseRepository (var ExpenseDao : ExpenseDao? ) {
+class ExpenseRepository(var ExpenseDao: ExpenseDao?) {
 
-    suspend fun insertExpense(expense: Expense){
+    suspend fun insertExpense(expense: Expense) {
         ExpenseDao?.insert(expense)
 
     }
 
-    suspend fun getExpensesbyGroup(name:Int): List<Expense>? {
-return ExpenseDao?.getAllExpense(name)
+    suspend fun getExpensesbyGroup(name: Int): List<Expense>? {
+        return ExpenseDao?.getAllExpense(name)
+    }
+
+    suspend fun SettleUp(name: Int) {
+        ExpenseDao?.deleteExpenses(name)
     }
 
 

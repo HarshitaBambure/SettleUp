@@ -5,7 +5,7 @@ import com.example.settleup.db.entity.User
 
 class UserRepository(var roomDatabase: UsersDatabase) {
 
-    suspend fun insertUser(user: User){
+    suspend fun insertUser(user: User) {
         roomDatabase.UsersDao()?.insert(user)
     }
 }

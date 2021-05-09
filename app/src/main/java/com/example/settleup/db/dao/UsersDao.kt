@@ -15,31 +15,36 @@ interface UsersDao {
     fun getAllUsers(): List<User>
 
     @Insert
-   suspend fun insert ( user: User)
+    suspend fun insert(user: User)
 
     @Delete
-   fun delete(user:User)
-//groupentity
+    fun delete(user: User)
+
+    //groupentity
     @Insert
-    suspend fun insert (groupEntity: GroupEntity):Long
+    suspend fun insert(groupEntity: GroupEntity): Long
 
     @Query("SELECT * FROM GroupEntity")
     fun getAllGroups(): List<GroupEntity>
 
     @Delete
-    fun delete(groupEntity:GroupEntity)
+    fun delete(groupEntity: GroupEntity)
 
     @Query("SELECT * FROM GroupEntity where id =:id")
-    fun getGroupbyid(id:Int): GroupEntity
+    fun getGroupbyid(id: Int): List<GroupEntity>
 
- //member
+    //member
     @Insert
-    suspend fun insertMember (member: Member )
+    suspend fun insertMember(member: Member)
 
     @Query("SELECT * FROM Member where group_id =:name")
-    fun getMemberbyGroupid(name:Int): List<Member>
+    fun getMemberbyGroupid(name: Int): List<Member>
 
     @Query("SELECT id FROM GroupEntity where group_name =:name")
-    fun getGroupid(name:String): Int
+    fun getGroupid(name: String): Int
+
+    @Query("SELECT id FROM Member where member_name =:name AND group_id=:grpId")
+    fun getidFromMemberName(name: String, grpId: Int): Int
+
 
 }

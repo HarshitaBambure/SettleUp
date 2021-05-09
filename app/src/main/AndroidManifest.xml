@@ -20,7 +20,7 @@
         <activity android:name=".ui.SendFeedbackActivity" />
         <activity android:name=".ui.CreateGroupActivity" />
         <activity android:name=".NewExpenseActivity" />
-        <activity android:name=".AddMembers" />
+        <activity android:name=".AddMembersActivity" />
         <activity android:name=".TransactionsActivity" />
         <activity android:name=".SignInActivity" />
         <activity

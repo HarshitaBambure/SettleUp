@@ -7,17 +7,17 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import java.util.ArrayList
 
 class ViewPagerAdapter(
-    list: ArrayList<Fragment>,
-    fm:FragmentManager,
-    lifecycle: Lifecycle):FragmentStateAdapter(fm,lifecycle) {
+        list: ArrayList<Fragment>,
+        fm: FragmentManager,
+        lifecycle: Lifecycle) : FragmentStateAdapter(fm, lifecycle) {
 
-    private val fragmentList:ArrayList<Fragment> = list
+    private val fragmentList: ArrayList<Fragment> = list
 
     override fun getItemCount(): Int {
-return fragmentList.size
+        return fragmentList.size
     }
 
     override fun createFragment(position: Int): Fragment {
-return fragmentList[position]
+        return fragmentList[position]
     }
 }
