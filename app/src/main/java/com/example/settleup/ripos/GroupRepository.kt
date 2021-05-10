@@ -32,4 +32,8 @@ class GroupRepository(var userDao: UsersDao?) {
         }
         return GroupEntity("test", 0)
     }
+
+    suspend fun deleteGroupById(id : Int){
+        userDao?.deleteGroup(id)
+    }
 }

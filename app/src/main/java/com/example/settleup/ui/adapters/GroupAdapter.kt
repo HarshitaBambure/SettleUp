@@ -13,7 +13,7 @@ import java.util.*
 
 class GroupAdapter : RecyclerView.Adapter<GroupAdapter.GroupDetailsViewHolder>() {
     var listGroups = mutableListOf<GroupEntity>()
-    lateinit var onclick: (data: GroupEntity) -> Unit
+    lateinit var onclick: (data: GroupEntity) -> Unit // (first round bracket is methods parameter and -> return type. this is functions signiture)
 
     open class GroupDetailsViewHolder(var onClick: (data: GroupEntity) -> Unit, itemView: View) : RecyclerView.ViewHolder(itemView) {
 

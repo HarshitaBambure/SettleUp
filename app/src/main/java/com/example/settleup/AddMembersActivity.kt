@@ -1,19 +1,13 @@
 package com.example.settleup
 
-import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import com.example.settleup.db.entity.GroupEntity
 import com.example.settleup.db.entity.Member
-import com.example.settleup.helper.Constants
 import com.example.settleup.helper.Constants.PREF_KEY_GROUPNAME
-import com.example.settleup.ui.SendFeedbackActivity
-import com.example.settleup.ui.fragments.HomeFragment
 import com.example.settleup.ui.viewmodel.CreateGroupViewModel
 import kotlinx.android.synthetic.main.activity_add_members.*
 

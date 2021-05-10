@@ -1,6 +1,7 @@
 package com.example.settleup
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +16,10 @@ import com.example.settleup.ui.adapters.SettleDebitsAdapter
 import com.example.settleup.ui.adapters.TransactionAdapter
 import com.example.settleup.ui.viewmodel.GroupDetailsViewModel
 import kotlinx.android.synthetic.main.activity_group_details.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlinx.android.synthetic.main.item_group_details.view.*
+import java.util.*
+import kotlin.collections.HashMap
 
 class GroupDetailsActivity : AppCompatActivity() {
     private lateinit var viewModel: GroupDetailsViewModel
@@ -43,6 +48,11 @@ class GroupDetailsActivity : AppCompatActivity() {
         sattleAdapter = SettleDebitsAdapter()
         rv_settledebit.adapter = sattleAdapter
         updateUi()
+        val rnd = Random()
+        val color: Int = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
+
+        txt_later.background = txt_later.context.roundedCornersDrawable(bgColor = color)
+
         fab_add_exp.setOnClickListener {
             val intent = Intent(this, NewExpenseActivity::class.java)
             intent.putExtra(Constants.KEY_GRP_ID, grpId)
@@ -52,7 +62,18 @@ class GroupDetailsActivity : AppCompatActivity() {
         btn_settle.setOnClickListener {
             settleUp()
         }
+
+        delete.setOnClickListener {
+            deleteGroup()
+            finish()
+        }
     }
+
+   fun deleteGroup() {
+       lifecycleScope.launchWhenStarted {
+           viewModel.deleteGroupById(grpId)
+       }
+   }
 
     override fun onResume() {
         super.onResume()
@@ -63,7 +84,8 @@ class GroupDetailsActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             val groupData = viewModel.getGroupbyId(grpId)
             txt_groupname.text = groupData?.group_name
-            txt_later.text = groupData?.group_name?.substring(1, 1)
+            txt_later.text = groupData?.group_name?.substring(0, 1)?.toUpperCase()
+
             listMember = viewModel.getMembersbyGroupid(grpId)?.toMutableList()!!
 
             listExpenses = viewModel.getExpensebyGroupid(grpId)?.toMutableList()!!

@@ -46,5 +46,8 @@ interface UsersDao {
     @Query("SELECT id FROM Member where member_name =:name AND group_id=:grpId")
     fun getidFromMemberName(name: String, grpId: Int): Int
 
+    @Query("DELETE FROM GroupEntity where id =:id")
+    fun deleteGroup(id: Int)
+
 
 }

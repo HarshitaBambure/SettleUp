@@ -36,5 +36,8 @@ class GroupDetailsViewModel(application: Application) : AndroidViewModel(applica
 
     suspend fun settleUp(id: Int) {
         expensepository.SettleUp(id)
+        }
+    suspend fun deleteGroupById(id: Int){
+        groupRepository.deleteGroupById(id)
     }
 }

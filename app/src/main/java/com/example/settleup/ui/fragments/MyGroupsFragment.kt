@@ -29,11 +29,12 @@ class MyGroupsFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         adapter = GroupAdapter()
         root.rv_groups.adapter = adapter
-        adapter.onclick = {
+        adapter.onclick = { data -> //setting implementation to onclick
             val intent = Intent(activity, GroupDetailsActivity::class.java)
-            intent.putExtra(Constants.KEY_GRP_ID, it.id)
+            intent.putExtra(Constants.KEY_GRP_ID, data.id)
             startActivity(intent)
-        }
+            }
+
         lifecycleScope.launchWhenStarted {
             val data = viewModel.getGroupList()
             data?.let { adapter.setData(it) }
@@ -41,7 +42,6 @@ class MyGroupsFragment : Fragment() {
         return root
     }
 }
-
 
 
 
