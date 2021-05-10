@@ -22,12 +22,6 @@ class HomeFragment : Fragment() {
     ): View? {
         val root1view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        root1view.fab_action
-        root1view.fab
-        //root1view.fab_expenses
-        root1view.txt_fab
-        // root1view.txt_expenses
-
         root1view.fab.setVisibility(View.GONE)
         //  root1view.fab_expenses.setVisibility(View.GONE)
         root1view.txt_fab.setVisibility(View.GONE)

@@ -24,7 +24,7 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/pink_light"
             android:text="Actions"
-            app:icon="@drawable/ic_launcher_foreground"
+            app:icon="@drawable/ic_menu_newgroup"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -77,28 +77,29 @@ class GroupDetailsActivity : AppCompatActivity() {
         listExpenses.forEach {
             val expense = it
             expense.forwhom.getArray().forEach {
-                val perPerson = expense.amount / expense.forwhom.getArray().size
+                val perPerson = expense.amount / expense.forwhom.getArray().size //total amount/no of people
 
                 var totAmt: Int = if (hasMapAmout.get(it) != null) hasMapAmout.get(it)!! else 0
                 if (it == expense.whopaid) {
-                    hasMapAmout.put(it, totAmt + (expense.amount - perPerson))
+                    hasMapAmout.put(it, totAmt + (expense.amount - perPerson)) //total amount - who paid amount
                 } else {
-                    hasMapAmout.put(it, totAmt - perPerson)
+                    hasMapAmout.put(it, totAmt - perPerson) //total amount- per person
                 }
             }
         }
 
         listDebts.clear()
-        val receiver = hasMapAmout.entries.find { it -> it.value > 0 }?.key
+        val receiver = hasMapAmout.entries.find { it -> it.value > 0 }?.key //get id will get money from others
         hasMapAmout.entries.forEach {
             val entry = it
             listMember.forEach {
                 if (entry.key == it.id) {
-                    it.amtGrp = entry.value
+                    it.amtGrp = entry.value // set calculated value to member
 
                     if (entry.value < 0) {
-                        if (receiver != null)
+                        if (receiver != null) {
                             listDebts.add(Debts(getNameById(receiver), it.member_name, entry.value))
+                        }
                     }
                 }
             }

@@ -82,8 +82,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 replaceFragment(fragment, "My Group")
             }
             R.id.nav_sendfeedback -> {
-                val Activity = SendFeedbackActivity()
-
                 val intent = Intent(this, SendFeedbackActivity::class.java)
                 startActivity(intent)
             }
