@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,8 +17,6 @@ import com.example.settleup.ui.adapters.SettleDebitsAdapter
 import com.example.settleup.ui.adapters.TransactionAdapter
 import com.example.settleup.ui.viewmodel.GroupDetailsViewModel
 import kotlinx.android.synthetic.main.activity_group_details.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlinx.android.synthetic.main.item_group_details.view.*
 import java.util.*
 import kotlin.collections.HashMap
 
@@ -67,6 +66,15 @@ class GroupDetailsActivity : AppCompatActivity() {
             deleteGroup()
             finish()
         }
+//        nested_scroll.setOnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+//            if (scrollY > 0 && fab_add_exp.getVisibility() == View.VISIBLE) {
+//                // User scrolled down and the FAB is currently visible -> hide the FAB
+//              // fab_add_exp.hide()
+//            } else if (scrollY < 0 && fab_add_exp.getVisibility() != View.VISIBLE) {
+//                // User scrolled up and the FAB is currently not visible -> show the FAB
+//                fab_add_exp.show()
+//            }
+//        }
     }
 
    fun deleteGroup() {
@@ -99,24 +107,25 @@ class GroupDetailsActivity : AppCompatActivity() {
         listExpenses.forEach {
             val expense = it
             expense.forwhom.getArray().forEach {
-                val perPerson = expense.amount / expense.forwhom.getArray().size //total amount/no of people
+                val perPerson = expense.amount / expense.forwhom.getArray().size
 
                 var totAmt: Int = if (hasMapAmout.get(it) != null) hasMapAmout.get(it)!! else 0
                 if (it == expense.whopaid) {
-                    hasMapAmout.put(it, totAmt + (expense.amount - perPerson)) //total amount - who paid amount
+                    hasMapAmout.put(it, totAmt + (expense.amount - perPerson))
                 } else {
-                    hasMapAmout.put(it, totAmt - perPerson) //total amount- per person
+                    hasMapAmout.put(it, totAmt - perPerson)
                 }
             }
+
         }
 
         listDebts.clear()
-        val receiver = hasMapAmout.entries.find { it -> it.value > 0 }?.key //get id will get money from others
+        val receiver = hasMapAmout.entries.find { it -> it.value > 0 }?.key
         hasMapAmout.entries.forEach {
             val entry = it
             listMember.forEach {
                 if (entry.key == it.id) {
-                    it.amtGrp = entry.value // set calculated value to member
+                    it.amtGrp = entry.value
 
                     if (entry.value < 0) {
                         if (receiver != null) {
@@ -141,7 +150,7 @@ class GroupDetailsActivity : AppCompatActivity() {
     private fun settleUp() {
         lifecycleScope.launchWhenStarted {
             viewModel.settleUp(grpId)
-            updateUi()
+            updateUi()  //for clear expenses
         }
     }
 

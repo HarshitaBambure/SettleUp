@@ -6,11 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.settleup.NewExpenseActivity
 import com.example.settleup.R
-import com.example.settleup.helper.Constants
 import com.example.settleup.ui.CreateGroupActivity
-import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 
 
